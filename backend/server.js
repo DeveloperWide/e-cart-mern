@@ -4,6 +4,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 
+// Routes
+import authRoutes from "./routes/user.routes.js";
+
 dotenv.config();
 const app = express();
 
@@ -19,6 +22,8 @@ app.use(
 );
 
 connectDB();
+
+app.use("/api/auth", authRoutes);
 
 // ROUTE
 app.get("/", (req, res) => {
